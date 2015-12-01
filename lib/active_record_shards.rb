@@ -6,7 +6,7 @@ require 'active_record_shards/shard_selection'
 require 'active_record_shards/connection_switcher'
 require 'active_record_shards/association_collection_connection_selection'
 require 'active_record_shards/connection_pool'
-require 'active_record_shards/migration'
+#require 'active_record_shards/migration'
 require 'active_record_shards/default_slave_patches'
 require 'active_record_shards/connection_handler'
 require 'active_record_shards/connection_specification'
@@ -42,9 +42,9 @@ end
 
 ActiveRecord::Associations::CollectionProxy.send(:include, ActiveRecordShards::AssociationCollectionConnectionSelection)
 
-if ActiveRecord::VERSION::MAJOR >= 4 && RUBY_VERSION >= '2'
-  ActiveRecord::SchemaDumper.send(:prepend, ActiveRecordShards::SchemaDumperExtension)
-end
+# if ActiveRecord::VERSION::MAJOR >= 4 && RUBY_VERSION >= '2'
+#   ActiveRecord::SchemaDumper.send(:prepend, ActiveRecordShards::SchemaDumperExtension)
+# end
 
 module ActiveRecordShards
   def self.rails_env
